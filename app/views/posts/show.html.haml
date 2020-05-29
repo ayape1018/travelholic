@@ -1,0 +1,8 @@
+%h1 Posts#show
+%p
+  =@post.title
+  =@post.body
+  -# -if @post.image.present?
+  -#   =image_tag @post.image_url(:thumb)
+
+  =link_to 'Edit', edit_place_post_path(@place, @post)

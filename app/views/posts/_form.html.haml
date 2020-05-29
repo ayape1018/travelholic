@@ -1,0 +1,12 @@
+=bootstrap_form_with model: [@place, @post], local: true do |f|
+  =f.text_field :title
+  =f.text_field :body
+  =f.file_field :images, multiple: true
+  -if @post.images.present?
+    -@post.images.each do |image|
+      =hidden_field :post, :images, multiple: true, value: image.identifier
+      =image_tag image.url(:thumb)
+      .checkbox.checkbox-primary.m-t-5
+        =f.check_box_without_bootstrap :remove_images
+        =f.label :remove_images, 'Delete Image'
+  =f.submit

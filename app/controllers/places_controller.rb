@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :set_work, only: [:show, :edit, :update, :destroy]
+  before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   def index
     @places = Place.all
@@ -10,7 +10,6 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new(place_params)
-    binding.pry
     if @place.save
       redirect_to places_path
     else
@@ -39,13 +38,20 @@ class PlacesController < ApplicationController
   end
 
   private
-    def set_work
-      @place = Place.find(params[:id])
-    end
+  def set_place
+    @place = Place.find(params[:id])
+  end
 
-    def place_params
-      params[:place].permit(:name, :address, :telephone, :url, :image, :remove_image, :country_id, :user_id)
-    end
-
-
+  def place_params
+    params[:place].permit(
+      :name,
+      :address,
+      :telephone,
+      :url,
+      :image,
+      :remove_image,
+      :country_id,
+      :user_id
+    )
+  end
 end

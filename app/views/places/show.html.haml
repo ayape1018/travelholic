@@ -7,5 +7,5 @@
   =@place.url
   -if @place.image.present?
     =image_tag @place.image_url(:thumb)
-
-  =link_to 'Delete',  place_path(@place), method: :delete, data: {confirm: '本当に削除しますか？'}
+  =link_to 'Edit', edit_place_path(@place)
+  =link_to 'Add new post', new_place_post_path(@place)
