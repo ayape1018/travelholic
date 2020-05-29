@@ -1,2 +1,11 @@
-%h1 Places#index
-%p Find me in app/views/places/index.html.haml
+%h1 Places#show
+%p
+  =@place.name
+  =@place.country_id
+  =@place.address
+  =@place.telephone
+  =@place.url
+  -if @place.image.present?
+    =image_tag @place.image_url(:thumb)
+
+  =link_to 'Delete',  place_path(@place), method: :delete, data: {confirm: '本当に削除しますか？'}

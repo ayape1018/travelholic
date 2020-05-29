@@ -1,2 +1,8 @@
-%h1 Places#index
-%p Find me in app/views/places/index.html.haml
+%h1 Places#edit
+%p Edit place
+=render 'form'
+=link_to 'Delete', place_path(@place), method: :delete, data: {confirm: '本当に削除しますか？'}
+\/
+=link_to 'Back to place page', place_path(@place)
+\/
+=link_to 'Go to top', places_path

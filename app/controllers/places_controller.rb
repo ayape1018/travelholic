@@ -10,6 +10,7 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new(place_params)
+    binding.pry
     if @place.save
       redirect_to places_path
     else
@@ -39,11 +40,11 @@ class PlacesController < ApplicationController
 
   private
     def set_work
-      @place = Place.find(prams[:id])
+      @place = Place.find(params[:id])
     end
 
     def place_params
-      params[:place].permit(:name, :address, :telephone, :url, :image)
+      params[:place].permit(:name, :address, :telephone, :url, :image, :remove_image, :country_id, :user_id)
     end
 
 

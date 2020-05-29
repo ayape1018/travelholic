@@ -1,2 +1,6 @@
-%h1 Places#index
-%p Find me in app/views/places/index.html.haml
+%h1 Places#new
+%p Register Place
+=render 'form'
+=link_to 'Place pageに戻る', places_path
+\/
+=link_to 'トップに戻る', places_path

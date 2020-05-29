@@ -1,12 +1,13 @@
 =bootstrap_form_with model: @place, local: true do |f|
   =f.text_field :name
+  =f.collection_select :country_id, Country.all, :id, :name, include_blank: true, class: 'form-control'
   =f.text_field :address
   =f.text_field :telephone
   =f.text_field :url
   =f.file_field :image
-  -#   -if @place.image.present?
-  -# =image_tag @place.image_url(:thumb)
-  -# .checkbox.checkbox-primary.m-t-5
-  -#   =f.check_box_without_bootstrap :remove_image
-  -#   =f.label :remove_image, 'Image Delete'
+  -if @place.image.present?
+    =image_tag @place.image_url(:thumb)
+    .checkbox.checkbox-primary.m-t-5
+      =f.check_box_without_bootstrap :remove_image
+      =f.label :remove_image, 'Image Delete'
   =f.submit
