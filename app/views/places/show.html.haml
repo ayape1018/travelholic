@@ -7,7 +7,7 @@
   -if @place.image.present?
     =image_tag @place.image_url(:thumb)
 %hr
-%p 投稿一覧
+%p ◇投稿一覧◇
 -@place.posts.each do |post|
   =link_to "・#{post.title}", country_place_post_path(@country, @place, post)
   %br
@@ -15,8 +15,6 @@
 =link_to '投稿する', new_country_place_post_path(@country, @place)
 %br
 =link_to "#{@place.name}を編集する", edit_country_place_path(@country, @place)
-\/
-=link_to '削除する', country_place_path(@country, @place), method: :delete, data: {confirm: '本当に削除しますか？'}
 %hr
 =link_to "#{@place.country.name}に戻る", country_path(@country)
 \/

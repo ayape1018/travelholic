@@ -1,9 +1,9 @@
--# %h1 国一覧
--# -@countries.each do |country|
--#   =link_to "#{country.name}", country_path(country)
--#   %br
--#
--# %hr
--# =link_to '国を追加する', new_country_path
--# %br
--# =link_to 'トップに戻る', root_path
+%h1 国一覧
+-@countries.each do |country|
+  =link_to "#{country.name}", country_path(country)
+  %br
+  
+%hr
+=link_to '国を追加する', new_country_path
+%br
+=link_to 'トップに戻る', root_path

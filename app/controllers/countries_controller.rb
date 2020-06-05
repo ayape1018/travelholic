@@ -1,5 +1,4 @@
 class CountriesController < ApplicationController
-  # before_action :set_area, only: [:new, :create]
   before_action :set_country, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,7 +9,6 @@ class CountriesController < ApplicationController
   end
 
   def create
-    # @country = Country.new(country_params.merge(area_id: params[:area_id]))
     @country = Country.new(country_params)
     if @country.save
       redirect_to area_path(@country.area)
@@ -28,7 +26,7 @@ class CountriesController < ApplicationController
 
   def update
     if @country.update(country_params)
-      redirect_to country_path(@country)
+      redirect_to area_path(@country.area)
     else
       render 'edit'
     end
@@ -36,17 +34,13 @@ class CountriesController < ApplicationController
 
   def destroy
     @country.destroy
-    redirect_to area_path(@country.area)
+    redirect_to root_path
   end
 
   private
   def set_country
     @country = Country.find(params[:id])
   end
-
-  # def set_area
-  #   @area = Area.find(params[:area_id])
-  # end
 
   def country_params
     params[:country].permit(
