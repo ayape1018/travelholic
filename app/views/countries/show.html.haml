@@ -9,6 +9,8 @@
   =link_to 'スポットを登録する', new_country_place_path(@country)
   %br
   =link_to "#{@country.name}を編集する", edit_country_path(@country)
+  \/
+  =link_to '削除する', country_path(@country), method: :delete, data: {confirm: '本当に削除しますか？'}
   %hr
   =link_to "#{@country.area.name}の国一覧に戻る", area_path(@country.area)
   \/

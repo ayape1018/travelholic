@@ -4,6 +4,6 @@
 =render 'form'
 =link_to '削除する', country_place_post_path(@country, @place, @post), method: :delete, data: {confirm: '本当に削除しますか？'}
 \/
-=link_to 'ポストに戻る', country_place_post_path(@country, @place, @post)
+=link_to "#{@post.title}に戻る", country_place_post_path(@country, @place, @post)
 \/
 =link_to 'トップに戻る', root_path
