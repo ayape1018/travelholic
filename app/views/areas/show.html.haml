@@ -1,0 +1,13 @@
+%h2=@area.name
+%p
+-if @area.countries.present?
+  -@area.countries.each do |country|
+    =link_to "・#{country.name}", country_path(country)
+    %br
+-else
+  %P 国がまだ登録されていません。
+
+%hr
+=link_to "#{@area.name}の国を追加する", new_country_path
+%br
+=link_to 'トップに戻る', root_path

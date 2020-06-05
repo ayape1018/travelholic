@@ -1,0 +1,5 @@
+%h1 Welcome to Travelholic
+%h5 どのエリアを見る？
+-@areas.each do |area|
+  =link_to "・#{area.name}", area_path(area)
+  %br
