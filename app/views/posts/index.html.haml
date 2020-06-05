@@ -1,2 +1,22 @@
-%h1 Posts#index
-%p Find me in app/views/posts/index.html.haml
+-# %h1 Posts#index
+-# -@posts.each do |post|
+-#
+-#   =link_to "#{post.title}", place_post_path(@place, post)
+-#   %br
+-#   =link_to '編集する', edit_place_post_path(@place, post)
+-#   =link_to '削除する', place_post_path(@place, post), method: :delete, data: {confirm: '本当に削除しますか？'}
+-#   %br
+-#
+-#   %hr
+-# =link_to '新規登録', new_place_post_path(@place)
+-# -# =link_to 'トップに戻る', root_path
+-# %p ◇ポスト一覧◇
+-# -@posts.each do |post|
+-#   =link_to "・#{post.title}", country_place_post_path(post.place.country, post.place, post)
+-#   %br
+-#
+-# =link_to '投稿する', new_post_path
+-# %hr
+-# =link_to "#{post.place.name}に戻る", country_place_path(post.place.country, post.place)
+-# \/
+-# =link_to 'トップに戻る', root_path

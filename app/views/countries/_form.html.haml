@@ -1,0 +1,4 @@
+=bootstrap_form_with model: @country, local: true do |f|
+  =f.text_field :name
+  =f.collection_select :area_id, Area.all, :id, :name, include_blank: true, class: 'form-control'
+  =f.submit

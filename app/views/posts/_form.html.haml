@@ -1,4 +1,5 @@
-=bootstrap_form_with model: [@place, @post], local: true do |f|
+=bootstrap_form_with model: [@country, @place, @post], local: true do |f|
+  -# =f.collection_select :place_id, Place.all, :id, :name, include_blank: true, class: 'form-control'
   =f.text_field :title
   =f.text_field :body
   =f.file_field :images, multiple: true
@@ -8,5 +9,5 @@
       =image_tag image.url(:thumb)
       .checkbox.checkbox-primary.m-t-5
         =f.check_box_without_bootstrap :remove_images
-        =f.label :remove_images, 'Delete Image'
+        =f.label :remove_images, '写真を消す'
   =f.submit

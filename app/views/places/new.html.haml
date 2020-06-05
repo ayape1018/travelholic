@@ -1,4 +1,7 @@
-%h1 Places#new
-%p New place
+%h1
+  ="#{@country.name}にスポットを追加する"
+%p
 =render 'form'
-=link_to 'Go to top', places_path
+=link_to "#{@country.name}に戻る", country_path(@country)
+\/
+=link_to 'トップに戻る', root_path

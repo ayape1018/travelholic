@@ -1,8 +1,15 @@
-%h1 Posts#show
+%h5
+  =@place.name
 %p
   =@post.title
   =@post.body
-  -# -if @post.image.present?
-  -#   =image_tag @post.image_url(:thumb)
-
-  =link_to 'Edit', edit_place_post_path(@place, @post)
+  -# -if @post.images.present?
+  -#   =image_tag @post.images_url(:thumb)
+  %br
+  =link_to '編集する', edit_country_place_post_path(@country, @place, @post)
+  \/
+  =link_to '削除する', country_place_post_path(@country, @place, @post), method: :delete, data: {confirm: '本当に削除しますか？'}
+  %hr
+  =link_to '投稿一覧に戻る', country_place_path(@country, @place)
+  \/
+  =link_to 'トップに戻る', root_path

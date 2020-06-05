@@ -1,0 +1,8 @@
+%h3 国名を編集する
+%p
+=render 'form'
+=link_to '削除する', country_path(@country), method: :delete, data: {confirm: '本当に削除しますか？'}
+\/
+=link_to "#{@country.name}に戻る", country_path(@country)
+\/
+=link_to 'トップに戻る', root_path

@@ -1,4 +1,7 @@
-%h1 Posts#new
-%p New post
+%h1
+  ="#{@place.name}に投稿する"
+%p
 =render 'form'
-=link_to 'Go to Place', place_path(@place)
+=link_to "ポスト一覧に戻る", country_place_path(@country, @place)
+\/
+=link_to 'トップに戻る', root_path

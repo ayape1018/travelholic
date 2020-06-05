@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_country
   before_action :set_place
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
 
   def index
     @posts = Post.all
@@ -10,9 +12,10 @@ class PostsController < ApplicationController
   end
 
   def create
+    # @post = Post.new(post_params)
     @post = Post.new(post_params.merge(place_id: params[:place_id]))
     if @post.save
-      redirect_to place_posts_path(@place)
+      redirect_to country_place_path(@country, @place)
     else
       render 'new'
     end
@@ -27,7 +30,8 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params.merge(place_id: params[:place_id]))
-      redirect_to place_post_path(@place, @post)
+    # if @post.update(post_params)
+      redirect_to country_place_post_path(@country, @place, @post)
     else
       render 'edit'
     end
@@ -35,7 +39,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to place_posts_path(@place)
+    redirect_to country_place_path(@country, @place)
   end
 
   private
@@ -47,6 +51,10 @@ class PostsController < ApplicationController
     @place = Place.find(params[:place_id])
   end
 
+  def set_country
+    @country = Country.find(params[:country_id])
+  end
+
   def post_params
     params[:post].permit(
       :title,
@@ -54,8 +62,9 @@ class PostsController < ApplicationController
       {images: []},
       :remove_images,
       :_destroy,
+      :place_id,
       :user_id,
-      :status,
+      :status
     )
   end
 end

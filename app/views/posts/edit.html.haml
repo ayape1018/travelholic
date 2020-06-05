@@ -1,8 +1,9 @@
-%h1 Posts#edit
-%p Edit post
+%h1
+  ="#{@post.title}を編集する"
+%p
 =render 'form'
-=link_to 'Delete', place_post_path(@place, @post), method: :delete, data: {confirm: '本当に削除しますか？'}
+=link_to '削除する', country_place_post_path(@country, @place, @post), method: :delete, data: {confirm: '本当に削除しますか？'}
 \/
-=link_to 'Back to post page', place_post_path(@place, @post)
+=link_to 'ポストに戻る', country_place_post_path(@country, @place, @post)
 \/
-=link_to 'Go to Place', place_path(@place)
+=link_to 'トップに戻る', root_path

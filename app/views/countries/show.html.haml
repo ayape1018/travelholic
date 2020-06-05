@@ -1,0 +1,15 @@
+%h3
+  ="#{@country.name}のおすすめスポット"
+%p
+  -@country.places.each do |place|
+    =link_to "・#{place.name}", country_place_path(@country, place)
+    %br
+
+  %hr
+  =link_to 'スポットを登録する', new_country_place_path(@country)
+  %br
+  =link_to "#{@country.name}を編集する", edit_country_path(@country)
+  %hr
+  =link_to "#{@country.area.name}の国一覧に戻る", area_path(@country.area)
+  \/
+  =link_to 'トップに戻る', root_path

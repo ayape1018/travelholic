@@ -1,2 +1,14 @@
-%h1 Places#index
-%p Find me in app/views/places/index.html.haml
+%h1
+  =@country.name
+
+%p
+  -@places.each do |place|
+    =link_to "・#{place.name}", country_place_path(@country, place)
+    %br
+
+  %hr
+  =link_to 'スポットを登録する', new_country_place_path(@country)
+  %br
+  =link_to '国一覧に戻る', country_path(@country)
+  \/
+  =link_to 'トップに戻る', root_path

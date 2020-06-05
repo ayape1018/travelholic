@@ -1,11 +1,21 @@
-%h1 Places#show
-%p
+%h3
   =@place.name
-  =@place.country_id
+%p
   =@place.address
   =@place.telephone
   =@place.url
   -if @place.image.present?
     =image_tag @place.image_url(:thumb)
-  =link_to 'Edit', edit_place_path(@place)
-  =link_to 'Add new post', new_place_post_path(@place)
+%hr
+%p ◇投稿一覧◇
+-@place.posts.each do |post|
+  =link_to "・#{post.title}", country_place_post_path(@country, @place, post)
+  %br
+%hr
+=link_to '投稿する', new_country_place_post_path(@country, @place)
+%br
+=link_to "#{@place.name}を編集する", edit_country_place_path(@country, @place)
+%hr
+=link_to "#{@place.country.name}に戻る", country_path(@country)
+\/
+=link_to 'トップに戻る', root_path
