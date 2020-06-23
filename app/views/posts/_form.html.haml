@@ -2,12 +2,22 @@
   -# =f.collection_select :place_id, Place.all, :id, :name, include_blank: true, class: 'form-control'
   =f.text_field :title
   =f.text_field :body
-  =f.file_field :images, multiple: true
-  -if @post.images.present?
-    -@post.images.each do |image|
-      =hidden_field :post, :images, multiple: true, value: image.identifier
-      =image_tag image.url(:thumb)
-      .checkbox.checkbox-primary.m-t-5
-        =f.check_box_without_bootstrap :remove_images
-        =f.label :remove_images, '写真を消す'
+  =f.file_field :image_1
+  -if @post.image_1.present?
+    =image_tag @post.image_1_url(:thumb)
+    .checkbox.checkbox-primary.m-t-5
+      =f.check_box_without_bootstrap :remove_image_1
+      =f.label :remove_image_1, '写真を消す'
+  =f.file_field :image_2
+  -if @post.image_2.present?
+    =image_tag @post.image_2_url(:thumb)
+    .checkbox.checkbox-primary.m-t-5
+      =f.check_box_without_bootstrap :remove_image_2
+      =f.label :remove_image_2, '写真を消す'
+  =f.file_field :image_3
+  -if @post.image_3.present?
+    =image_tag @post.image_3_url(:thumb)
+    .checkbox.checkbox-primary.m-t-5
+      =f.check_box_without_bootstrap :remove_image_3
+      =f.label :remove_image_3, '写真を消す'
   =f.submit

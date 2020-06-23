@@ -3,8 +3,14 @@
 %p
   =@post.title
   =@post.body
-  -# -if @post.images.present?
-  -#   =image_tag @post.images_url(:thumb)
+  -if @post.image_1.present?
+    =image_tag @post.image_1_url(:thumb)
+  -if @post.image_2.present?
+    =image_tag @post.image_2_url(:thumb)
+  -if @post.image_3.present?
+    =image_tag @post.image_3_url(:thumb)
+
+
   %br
   =link_to '編集する', edit_country_place_post_path(@country, @place, @post)
   \/

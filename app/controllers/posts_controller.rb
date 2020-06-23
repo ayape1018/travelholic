@@ -12,7 +12,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    # @post = Post.new(post_params)
     @post = Post.new(post_params.merge(place_id: params[:place_id]))
     if @post.save
       redirect_to country_place_path(@country, @place)
@@ -30,7 +29,6 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params.merge(place_id: params[:place_id]))
-    # if @post.update(post_params)
       redirect_to country_place_post_path(@country, @place, @post)
     else
       render 'edit'
@@ -59,8 +57,12 @@ class PostsController < ApplicationController
     params[:post].permit(
       :title,
       :body,
-      {images: []},
-      :remove_images,
+      :image_1,
+      :image_2,
+      :image_3,
+      :remove_image_1,
+      :remove_image_2,
+      :remove_image_3,
       :_destroy,
       :place_id,
       :user_id,
